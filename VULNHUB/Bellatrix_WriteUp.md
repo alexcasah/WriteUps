@@ -15,19 +15,19 @@
 
 - [Recopilación de información](#recopilación-de-información)
   - [Nmap](#nmap)
-  - [Web]()
+  - [Web](#web)
 - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades)
-  - [Web]()
+  - [Web](#web-1)
 - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
-  - [Command Injection]()
-  - [SSH Log]()
+  - [Command Injection](#command-injection)
+  - [SSH Log](#ssh-log)
 - [Post-explotación](#post-explotación)
-  - [Recopilación de información]()
-  - [Movimiento Lateral]()
+  - [Recopilación de información](#recopilación-de-información-1)
+  - [Movimiento Lateral](#movimiento-lateral)
   - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades-1)
-       - [SUDO -L]()
+       - [SUDO -L](#sudo--l)
   - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
-       - [SUDO VIM]()
+       - [SUDO VIM](#sudo-vim)
 - [Información Adicional](#información-adicional)
 
 
@@ -190,4 +190,4 @@ Páginas web utilizadas:
 - [VIM](https://gtfobins.github.io/gtfobins/vim/#sudo) - Enumeración de escalada de privilegios.
 
 
-**[⬆ back to top](#-----hogwarts-dobby-)**
+**[⬆ back to top](#-----hogwarts-bellatrix-)**
