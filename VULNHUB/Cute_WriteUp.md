@@ -14,17 +14,17 @@
 
 - [Recopilación de información](#recopilación-de-información)
   - [Nmap](#nmap)
-  - [Web](#)
+  - [Web](#web)
 - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades)
-  - [Web](#)
+  - [Web](#web-1)
 - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
-  - [Remote Code Execution](#)
-  - [Reverse Shell](#)
-- [Post-explotación](#)
+  - [Remote Code Execution](#remote-code-execution)
+  - [Reverse Shell](#reverse-shell)
+- [Post-explotación](#post-explotación)
   - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades-1)
-       - [SUDO -L](#)
+       - [SUDO -L](#sudo--l)
   - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
-       - [HPING3](#)
+       - [HPING3](#hping3)
 - [Información Adicional](#información-adicional)
 
 
@@ -128,4 +128,4 @@ Páginas web utilizadas:
 - [HPIN3](https://tools.kali.org/information-gathering/hping3) - Descripción del paquete hping3.
 
 
-**[⬆ back to top](#-----hogwarts-bellatrix-)**
+**[⬆ back to top](#-----bbs-cute-102-)**
