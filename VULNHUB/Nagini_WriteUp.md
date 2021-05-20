@@ -110,7 +110,9 @@ Entramos en la página web que hemos recopilado anteriormente y probando hemos c
 
 Además también recopilamos que podria haber un archivo .bak, así que como sabemos que joomla tiene un **configuration.php** probaremos ese archivo pero con el **.bak**
 
+<h1 align="center">
 <img src="https://i.gyazo.com/80332244cc29f88dc54c8131320895e8.png">
+</h1>
 
 En este archivo hemos encontrado que un usuario es **goblin** y el correo **site_admin@nagini.hogwarts**
 
@@ -242,7 +244,9 @@ Al buscar información de como hacerle decrypt a las contraseñas de mozilla he 
 Lo descargamos y le damos permisos de ejecución, después de esto lo ejecutaremos teniendo el archivo **key4.db** en la misma carpeta:
 ```python3 firepwd.py```
 
+<h1 align="center">
 <img src="https://i.gyazo.com/f6394e679f7a3602c1e79f19a99a2792.png">
+</h1>
 
 Por último nos conectaremos como root y podremos obtener la flag de root.
 
