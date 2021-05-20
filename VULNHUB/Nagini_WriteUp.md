@@ -85,3 +85,40 @@ Con el curl que tengo instalado no he podido leer la web HTTP3, asi que me he in
 
 He tenido algunos errores y para solucionarlo he utilizado esta [página web](https://stackoverflow.com/questions/44303915/no-default-toolchain-configured-after-installing-rustup) y este comando ```sudo pacman -S cmake```
 
+Después de esto seguiremos estos comandos:
+
+```
+cd src
+./curl --http3 https://quic.nagini.hogwarts
+```
+> 192.168.221.8 quic.nagini.hogwarts en el archivo /etc/hosts
+
+En esa página web leemos esto:
+
+```
+Greetings Developers!!
+
+                I am having two announcements that I need to share with you:
+
+                1. We no longer require functionality at /internalResourceFeTcher.php in our main production servers.So I will be removing the same by this week.
+                2. All developers are requested not to put any configuration's backup file (.bak) in main production servers as they are readable by every one.
+
+
+                Regards,
+                site_admin
+```
+### Web
+
+Entramos en la página web que hemos recopilado anteriormente y probando hemos comprobado que tenemos un file inclusion:
+```http://quic.nagini.hogwarts/internalResourceFeTcher.php?url=file:/etc/passwd```
+
+Además también recopilamos que podria haber un archivo .bak, así que como sabemos que joomla tiene un **configuration.php** probaremos ese archivo pero con el **.bak**
+
+En este archivo hemos encontrado que un usuario es **goblin**
+
+Después de mucha búsqueda y de alguna **hint** que me han dado, he encontrao una vulnerabilidad de **SSRF**
+
+> SSRF(Server-side Request Forgery) es una vulnerabilidad de seguridad web que permite a un atacante inducir a la aplicación del
+> lado del servidor a realizar solicitudes HTTP a un dominio arbitario de la elección del atacante.
+
+
