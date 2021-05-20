@@ -272,3 +272,20 @@ Here is your third hocrux: horcrux_{NTogRGlhZGVtIG9mIFJhdmVuY2xhdyBkZXN0cm95ZWQg
 
 ```
 
+## Información Adicional
+
+Páginas web utilizadas:
+
+- [Curl](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) - Para la instalación del curl desde un repositorio
+
+- [Rustup](https://stackoverflow.com/questions/44303915/no-default-toolchain-configured-after-installing-rustup) - Solución al error de instalación del cargo
+
+- [Gopherus](https://github.com/tarunkant/Gopherus) - Herramienta para generar payloads para explotar el SSRF
+
+- [PHP Reverse Shell](https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php) - Reverse Shell PHP
+
+- [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) - Enumeración de escalada de privilegios local.
+
+- [Mozilla Decrypt](https://github.com/lclevy/firepwd) - Escalada de privilegios SUID con el find
+
+**[⬆ back to top](#-----hogwarts-dobby-)**
