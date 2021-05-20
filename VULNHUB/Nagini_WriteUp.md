@@ -175,7 +175,7 @@ Lo que vamos hacer ahora es modificar la contraseña del usuario con el correo q
 
 <img src="https://i.gyazo.com/56244fae80fb8c16a813a99b97a8b866.png">
 
-> Se veria de esta forma el uso de esta tool
+> Se veria de esta forma el uso de esta herramienta
 
 ## Explotación de vulnerabilidades
 
