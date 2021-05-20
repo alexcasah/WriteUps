@@ -58,7 +58,7 @@ Esta es la página web que hemos encontrao, como vemos tiene un .php escondido:
 
 ### Web
 
-Si usamos en mi caso **Ctrl+U** para ver el codigo fuente podemos encontrar una funcion get y un texto:
+Si usamos en mi caso **Ctrl+U** para ver el codigo fuente podemos encontrar una funcion **get** y un texto:
 
 <img src="https://i.gyazo.com/1e1d112e282227f71c083812fea4911f.png">
 
