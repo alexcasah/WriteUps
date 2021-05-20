@@ -15,19 +15,19 @@
 
 - [Recopilación de información](#recopilación-de-información)
   - [Nmap](#nmap)
-  - [Fuzz]()
-  - [Curl]()
-  - [Web]()
+  - [Fuzz](#fuzz)
+  - [Curl](#curl)
+  - [Web](#web)
 - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades)
-  - [Gopherus]()
+  - [Gopherus](#gopherus)
 - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
-  - [Joomla]()
+  - [Joomla](#joomla)
 - [Post-explotación](#post-explotación)
-  - [Movimiento Lateral]()
+  - [Movimiento Lateral](#movimiento-lateral)
   - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades-1)
-       - [linPEAS]()
+       - [linPEAS](#linpeas)
   - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
-       - [Mozilla decrypt]()
+       - [Mozilla decrypt](#mozilla-decrypt)
 - [Información Adicional](#información-adicional)
 
 
@@ -288,4 +288,4 @@ Páginas web utilizadas:
 
 - [Mozilla Decrypt](https://github.com/lclevy/firepwd) - Escalada de privilegios SUID con el find
 
-**[⬆ back to top](#-----hogwarts-dobby-)**
+**[⬆ back to top](#-----harry-potter-nagini-)**
