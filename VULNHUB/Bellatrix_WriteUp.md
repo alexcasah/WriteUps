@@ -147,7 +147,7 @@ Y en el ```.secret.dic``` podemos ver que es un diccionario.
 
 Lo que procedemos ha hacer es crackear ese hash encontrado anteriormente y pasarle el diccionario tambien encontrado antes.
 
-Utilizaremos el [John the Ripper]https://www.openwall.com/john/) para crackearlo:
+Utilizaremos el [John the Ripper](https://www.openwall.com/john/) para crackearlo:
 ```john --wordlist=hp.dic hash```
 
 > **hp.dic** es el diccionario y **hash** es el hash
