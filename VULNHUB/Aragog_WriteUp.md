@@ -74,7 +74,7 @@ Esto es lo que recibimos con el wpscan:
 
 ## Explotación de vulnerabilidades
 
-A la hora de explotar esta vulnerabilidad he encontrado este [exploit](https://www.exploit-db.com/exploits/49178) que utilizaremos para tener una reverse shell.
+A la hora de explotar esta vulnerabilidad he encontrado este [exploit](https://www.exploit-db.com/exploits/49178) que utilizaremos para ver que CVE podemos buscar en el metasploit.
 
 ### Metasploit
 
@@ -195,16 +195,9 @@ Here is your second hocrux: horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWV
 
 Páginas web utilizadas:
 
-- [Curl](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) - Para la instalación del curl desde un repositorio
-
-- [Rustup](https://stackoverflow.com/questions/44303915/no-default-toolchain-configured-after-installing-rustup) - Solución al error de instalación del cargo
-
-- [Gopherus](https://github.com/tarunkant/Gopherus) - Herramienta para generar payloads para explotar el SSRF
+- [WordPress CVE-2020-25213](https://www.exploit-db.com/exploits/49178) - Exploit para saber que CVE podemos buscar
 
 - [PHP Reverse Shell](https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php) - Reverse Shell PHP
 
-- [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) - Enumeración de escalada de privilegios local.
 
-- [Mozilla Decrypt](https://github.com/lclevy/firepwd) - Escalada de privilegios SUID con el find
-
-**[⬆ back to top](#-----harry-potter-nagini-)**
+**[⬆ back to top](#-----harry-potter-aragog-)**
