@@ -15,20 +15,20 @@
 
 - [Recopilación de información](#recopilación-de-información)
   - [Nmap](#nmap)
-  - [Fuzz / Whatweb](#)
+  - [Fuzz / Whatweb](#fuzz--whatweb)
 - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades)
-  - [Tomcat](#)
+  - [Tomcat](#tomcat)
 - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
-  - [Reverse Shell](#)
+  - [Reverse Shell](#reverse-shell)
 - [Post-explotación](#post-explotación)
-  - [Movimiento Lateral I](#)
-  - [Movimiento Lateral II](#)
-       - [linPEAS](#)
-       - [Reverse Shell](#)
+  - [Movimiento Lateral I](#movimiento-lateral-i)
+  - [Movimiento Lateral II](#movimiento-lateral-ii)
+       - [linPEAS](#linpeas)
+       - [Reverse Shell](#reverse-shell-1)
   - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades-1)
-       - [SUDO -L](#)
+       - [SUDO -L](#sudo--l)
   - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
-       - [SCP](#)
+       - [SCP](#scp)
 - [Información Adicional](#información-adicional)
 
 
@@ -110,7 +110,7 @@ ilovestegno
 
 En el archivo **hacksudo.zip** no tenemos nada importante
 
-Lo que haremos con este archivo **vishal.jpg**, és extraer los datos ocultos con la herramienta [Stegseek](https://github.com/RickdeJager/stegseek)
+Lo que haremos con este archivo **vishal.jpg**, és extraer los datos ocultos con la herramienta [StegSeek](https://github.com/RickdeJager/stegseek)
 
 Usaremos este comando con docker:
 
@@ -207,16 +207,16 @@ Gracias a esto conseguirmos ser **root**
 
 Páginas web utilizadas:
 
-- [Curl](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) - Para la instalación del curl desde un repositorio
+- [Tomcat Default Credentials](https://github.com/netbiosX/Default-Credentials/blob/master/Apache-Tomcat-Default-Passwords.mdown) - Aquí tenemos todas las credenciales por defecto del Tomcat
 
-- [Rustup](https://stackoverflow.com/questions/44303915/no-default-toolchain-configured-after-installing-rustup) - Solución al error de instalación del cargo
+- [StegSeek](https://github.com/RickdeJager/stegseek) - Una herramienta para sacar datos/archivos escondidos de un archivo
 
-- [Gopherus](https://github.com/tarunkant/Gopherus) - Herramienta para generar payloads para explotar el SSRF
+- [CyberChef](https://gchq.github.io/CyberChef/) - Aplicación Web para encriptar, codificar, comprimir y análisis de datos
 
-- [PHP Reverse Shell](https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php) - Reverse Shell PHP
+- [CrackStation](https://crackstation.net/) - Aplicación Web para crackear hashes
 
 - [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) - Enumeración de escalada de privilegios local.
 
-- [Mozilla Decrypt](https://github.com/lclevy/firepwd) - Escalada de privilegios SUID con el find
+- [GTFOBins SCP](https://gtfobins.github.io/gtfobins/scp/#sudo) - Escalada de privilegios SUDO con el SCP
 
-**[⬆ back to top](#-----harry-potter-nagini-)**
+**[⬆ back to top](#-----hacksudo-101-)**
