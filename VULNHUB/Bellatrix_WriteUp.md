@@ -146,9 +146,9 @@ El resultado es este:
 
 ### SUDO VIM
 
-Al ver esto iremos a esta [página web]https://gtfobins.github.io/gtfobins/vim/#sudo) para ver como podemos explotar esta vulnerabilidad y ser **root**
+Al ver esto iremos a esta [página web](https://gtfobins.github.io/gtfobins/vim/#sudo) para ver como podemos explotar esta vulnerabilidad y ser **root**
 
-Encontramos un payload que no ayudara a escalar privilegios:
+Encontramos un payload que nos ayudara a escalar privilegios:
 
 ```sudo /usr/bin/vim -c ':!/bin/sh'```
 
