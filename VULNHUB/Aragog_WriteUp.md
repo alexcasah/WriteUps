@@ -15,17 +15,17 @@
 
 - [Recopilación de información](#recopilación-de-información)
   - [Nmap](#nmap)
-  - [Fuzz]()
+  - [Fuzz](#fuzz)
 - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades)
-  - [Wordpress]()
+  - [Wordpress](#wordpress)
 - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades)
-  - [Metasploit]()
+  - [Metasploit](#metasploit)
 - [Post-explotación](#post-explotación)
-  - [Movimiento Lateral]()
-    - [Mysql]()
+  - [Movimiento Lateral](#movimiento-lateral)
+    - [Mysql](#mysql)
   - [Búsqueda de vulnerabilidades](#búsqueda-de-vulnerabilidades-1)
   - [Explotación de vulnerabilidades](#explotación-de-vulnerabilidades-1)
-       - [Reverse Shell]()
+       - [Reverse Shell](#reverse-shell)
 - [Información Adicional](#información-adicional)
 
 
