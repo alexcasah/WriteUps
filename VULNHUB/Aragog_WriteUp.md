@@ -147,6 +147,13 @@ Ahora nos conectaremos por ssh al usuario y ya seremos **hagrid98**
 
 ## Búsqueda de vulnerabilidades
 
+Usaremos la heramienta [pspy](https://github.com/DominicBreuker/pspy) para listar los procesos.
+
+```
+CMD: UID=0    PID=3236   | /bin/sh -c bash -c "/opt/.backup.sh" 
+CMD: UID=0    PID=3237   | /bin/bash /opt/.backup.sh
+```
+
 Ahora comenzaremos a enumerar todo lo possible hasta encontrar en la carpeta **/opt** con el comando ```ls -a``` un archivo llamado **.backup.sh** que contiene esto:
 
 ```
@@ -196,6 +203,8 @@ Here is your second hocrux: horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWV
 Páginas web utilizadas:
 
 - [WordPress CVE-2020-25213](https://www.exploit-db.com/exploits/49178) - Exploit para saber que CVE podemos buscar
+
+- [Pspy](https://github.com/DominicBreuker/pspy) - Herramienta de comando diseñada para espiar procesos sin necesidad de permisos de root
 
 - [PHP Reverse Shell](https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php) - Reverse Shell PHP
 
