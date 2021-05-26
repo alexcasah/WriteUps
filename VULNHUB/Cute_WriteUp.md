@@ -7,7 +7,7 @@
 </h1>
 
 <h4 align="center">Maquina creada por foxlox</h4>
-<h4 align="center">Aquí puedes descargarte la <a href="http://www.vulnhub.com/entry/bbs-cute-102,567/">página web</a> y ver una descripción de ella</h4>
+<h4 align="center">Aquí puedes descargarte la <a href="http://www.vulnhub.com/entry/bbs-cute-102,567/">máquina</a> y ver una descripción de ella</h4>
 
 ---
 # Índice
