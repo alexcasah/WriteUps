@@ -7,7 +7,7 @@
 </h1>
 
 <h4 align="center">Maquina creada por <img src="https://img.icons8.com/fluent/344/email-open.png" alt="Front-End Checklist" width="20">vishal@hacksudo.comr</h4>
-<h4 align="center">Aquí puedes descargarte la <a href="https://www.vulnhub.com/entry/hacksudo-101,650/">página web</a> y ver una descripción de ella</h4>
+<h4 align="center">Aquí puedes descargarte la <a href="https://www.vulnhub.com/entry/hacksudo-101,650/">máquina</a> y ver una descripción de ella</h4>
 
 ---
 
