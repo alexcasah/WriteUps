@@ -7,7 +7,7 @@
 </h1>
 
 <h4 align="center">Maquina creada por <img src="https://img.icons8.com/android/344/twitter.png" alt="Front-End Checklist" width="12">@BertrandLorent9</h4>
-<h4 align="center">Aquí puedes descargarte la <a href="https://www.vulnhub.com/entry/hogwarts-dobby,597/">página web</a> y ver una descripción de ella</h4>
+<h4 align="center">Aquí puedes descargarte la <a href="https://www.vulnhub.com/entry/hogwarts-dobby,597/">máquina</a> y ver una descripción de ella</h4>
 
 ---
 
