@@ -68,7 +68,7 @@ Si usamos en mi caso **Ctrl+U** para ver el codigo fuente podemos encontrar una 
 
 Ahora explotaremos la vulnerabilidad de la funcion get añadiendole ```?file=```
 
-<img src="https://i.gyazo.com/bf0399383f893584784b37dfe41fefc9.png">
+<img src="https://gyazo.com/bf62b2c4f3081c89ff5a0d75b307894c.png">
 
 > Imagen de command injection con /etc/passwd
 
